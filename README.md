@@ -1,1 +1,3 @@
-## This is a simple random emojis
+## This contains some simple javascript project
+
+`Random emojis`
