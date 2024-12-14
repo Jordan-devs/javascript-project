@@ -2,6 +2,10 @@
 
 1.  `Random emojis`
 
-```
-Hover the emoji and experience seamless change of emojis
-```
+##### Hover the emoji and experience seamless change of emojis.
+
+---
+
+2. `Interchangeable colors`
+
+##### Click on any button to change the background
