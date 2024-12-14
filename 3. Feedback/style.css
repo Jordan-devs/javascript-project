@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: hsl(0, 0%, 6%);
+  height: 100vh;
+  font-family: sans-serif;
+}
+
+.feedback-container {
+  width: min(800px, 100%);
+  height: 400px;
+  background-color: hsl(0, 0%, 10%);
+  border-radius: 10px;
+  box-shadow: -7px 5px 11px 0px rgba(0, 0, 0, 0.66);
+}
+
+.feedback {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+h3 {
+  position: absolute;
+  top: 10%;
+  color: hsl(0, 0%, 89%);
+}
+
+.emoji-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 25%;
+}
+
+.emoji-group div {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 20px;
+  cursor: pointer;
+  padding: 10px;
+  transition: all 200ms ease-in;
+}
+.emoji-group div:hover {
+  background-color: hsl(0, 0%, 55%);
+  border-radius: 8px;
+}
+
+.active {
+  background-color: hsl(0, 0%, 55%);
+  border-radius: 8px;
+}
+
+span {
+  font-size: 6em;
+}
+
+div h4 {
+  font-size: 1em;
+  color: hsl(0, 0%, 96%);
+  margin-top: 0.7em;
+  font-weight: 500;
+}
+
+button {
+  position: absolute;
+  bottom: 10%;
+  padding: 12px 30px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.98);
+}
