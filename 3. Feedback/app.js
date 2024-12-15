@@ -1,36 +1,29 @@
-//getting elements from the dom
+// Getting Elements From The DOM
 const ratings = document.querySelectorAll(".rating");
-const feedback = document.querySelector(".feedback");
-const btn = document.querySelector("button");
+const ratingsContainer = document.querySelector(".ratings-container");
+const sendBtn = document.querySelector("#send");
+const panel = document.querySelector("#panel");
 
-let notSelected = "selected";
+let selectedRating = "Satisfied";
 
-ratings.forEach((rating) => {
-  rating.addEventListener("click", () => {
-    notSelected = rating.getAttribute("data-attribute");
-    activeState(rating);
-  });
+// Attaching Event
+ratingsContainer.addEventListener("click", (e) => {
+  if (e.target.parentNode.classList.contains("rating")) {
+    remove();
+
+    e.target.parentNode.classList.add("active");
+    selectedRating = e.target.nextElementSibling.innerHTML;
+  }
 });
 
-function activeState(selected) {
-  //remove previous rating with active class
+function remove() {
   ratings.forEach((rate) => {
     rate.classList.remove("active");
   });
-  //add active class
-  selected.classList.toggle("active");
 }
 
-btn.addEventListener("click", () => {
-  //check if there was no selected rating
-  if (notSelected) {
-    alert("Please chose a rating");
-  } else {
-    feedback.innerHTML = `
-            <div class="emoji-group">
-          <div class="rating">
-            <span>💖</span>
-            <h4>Thanks for your Feedback</h4>
-          </div>`;
-  }
+sendBtn.addEventListener("click", () => {
+  panel.innerHTML = `
+  <p class="heart">💖</p>
+  <strong>Thanks for your Feedback: ${selectedRating}</strong>`;
 });

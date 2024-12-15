@@ -1,32 +1,33 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
     <title>Feedback</title>
+
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="feedback-container">
-      <div class="feedback">
-        <h3>Your Feedback 👀</h3>
-        <div class="emoji-group">
+    <section class="panel-container" id="panel">
+      <strong>Your Feedback 👀</strong>
+      <div class="ratings-container">
+        <div class="container">
           <div class="rating">
-            <span>😒</span>
-            <h4>Unhappy</h4>
+            <div class="icon">😒</div>
+            <small>Unhappy</small>
           </div>
           <div class="rating">
-            <span>😐</span>
-            <h4>Neutral</h4>
+            <div class="icon">😐</div>
+            <small>Neutral</small>
           </div>
           <div class="rating">
-            <span>😊</span>
-            <h4>satisfied</h4>
+            <div class="icon">😊</div>
+            <small>Satisfied</small>
           </div>
         </div>
-        <button>Send Feedback ➡</button>
       </div>
-    </div>
+      <button class="btn" id="send">Send Feedback</button>
+    </section>
     <script src="app.js"></script>
   </body>
 </html>

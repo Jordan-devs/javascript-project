@@ -1,93 +1,91 @@
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: hsl(0, 0%, 6%);
-  height: 100vh;
+  background: rgb(26, 25, 25);
   font-family: sans-serif;
-}
-
-.feedback-container {
-  width: min(800px, 100%);
-  height: 400px;
-  background-color: hsl(0, 0%, 10%);
-  border-radius: 10px;
-  box-shadow: -7px 5px 11px 0px rgba(0, 0, 0, 0.66);
-}
-
-.feedback {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.panel-container {
+  background: #1d1c1c;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  font-size: 90%;
+  display: flex;
   flex-direction: column;
-  height: 100%;
-  position: relative;
-}
-
-h3 {
-  position: absolute;
-  top: 10%;
-  color: hsl(0, 0%, 89%);
-}
-
-.emoji-group {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 25%;
+  align-items: center;
+  padding: 30px;
+  width: 700px;
+  color: #fff;
 }
 
-.emoji-group div {
-  align-items: center;
+.container {
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  margin-right: 20px;
+  align-items: center;
+  text-align: center;
+  width: 500px;
+}
+
+.panel-container strong {
+  line-height: 20px;
+  text-align: center;
+}
+
+.ratings-container {
+  display: flex;
+  margin: 20px 0;
+}
+
+.rating {
+  flex: 1;
   cursor: pointer;
-  padding: 10px;
-  transition: all 200ms ease-in;
-}
-.emoji-group div:hover {
-  background-color: hsl(0, 0%, 55%);
-  border-radius: 8px;
+  padding: 20px;
+  margin: 10px 5px;
 }
 
-.active {
-  background-color: hsl(0, 0%, 55%);
-  border-radius: 8px;
+.rating:hover,
+.rating.active {
+  border-radius: 4px;
+  background: #ccc;
+  transition: 1s ease;
 }
 
-span {
-  font-size: 6em;
+.rating .icon {
+  width: 40px;
+  font-size: 5rem;
+  margin-right: 10px;
 }
 
-div h4 {
-  font-size: 1em;
-  color: hsl(0, 0%, 96%);
-  margin-top: 0.7em;
-  font-weight: 500;
+.rating small {
+  color: #fff;
+  display: inline-block;
+  margin: 10px 0 0;
 }
 
-button {
-  position: absolute;
-  bottom: 10%;
+.btn {
+  background: #fff;
+  color: #000;
+  border: 0;
+  border-radius: 4px;
   padding: 12px 30px;
-  border-radius: 5px;
-  font-size: 0.9em;
-  border: none;
-  outline: none;
   cursor: pointer;
+  outline: 0;
 }
 
-button:active {
+.btn:active {
   transform: scale(0.98);
+}
+
+.heart {
+  font-size: 3rem;
+  margin-bottom: 10px;
 }
