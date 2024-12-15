@@ -15,3 +15,7 @@
 3. `Feedback`
 
 ##### custom feedback
+
+4. `simple calculator`
+
+##### Made a calculator with simple operators
