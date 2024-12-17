@@ -148,11 +148,13 @@ button:hover {
   color: #6b7280;
 }
 
-box-icon {
+lord-icon {
   fill: #9ca3af;
   cursor: pointer;
+  width: 30px;
+  height: 30px;
 }
 
-box-icon:hover {
-  fill: #e5e7eb;
+lord-icon:hover {
+  color: #e5e7eb;
 }

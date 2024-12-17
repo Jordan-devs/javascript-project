@@ -22,34 +22,30 @@ function makeTodo(value) {
   let del = document.createElement("div");
   del.innerHTML = `
               <div>
-              <box-icon name="trash" animation="tada-hover"></box-icon>
+              <lord-icon trigger="hover" src="trash.json" state="hover-roll"></lord-icon>
             </div>`;
 
   todo.appendChild(cont);
   todo.appendChild(del);
   todos.appendChild(todo);
-
-  //adding check functionality
-
-  check.addEventListener("click", (e) => {
-    check.classList.toggle("checked");
-    if (check.classList.contains("checked")) {
-      check.textContent = "✔";
-    } else {
-      check.textContent = "";
-    }
-    text.classList.toggle("completed");
-  });
-
-  //deleting object
-  del.addEventListener("click", (e) => {
-    todos.removeChild(todo);
-  });
 }
+
+//adding check functionality
+
+todos.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (e.target.classList.contains("check")) {
+    e.target.classList.toggle("checked");
+    e.target.textContent = e.target.classList.contains("checked") ? "✔" : "";
+    e.target.nextElementSibling.classList.toggle("completed");
+  } else if (e.target.closest("lord-icon[trigger ='hover']")) {
+    e.target.closest(".todo").remove();
+  }
+});
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  value = input.value;
+  const value = input.value;
   if (!value.trim()) return;
   input.value = "";
   makeTodo(value);

@@ -7,7 +7,7 @@
     <title>Todo list</title>
   </head>
   <body>
-    <div class="container">
+    <main class="container">
       <div class="todo_container">
         <h3>Todo List App</h3>
         <p>Organize your day, one task at a time</p>
@@ -18,14 +18,17 @@
             id="input_todo"
             placeholder="Add new task..."
             class="make_todo"
+            aria-label="Add new task"
           />
-          <button type="submit">Add</button>
+          <button type="submit" aria-labelledby="add task">Add</button>
         </form>
         <div class="todos"></div>
-        <p id="copyright">© 2024 Olacodes. All rights reserved</p>
+        <footer>
+          <p id="copyright">© 2024 Olacodes. All rights reserved,</p>
+        </footer>
       </div>
-    </div>
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    </main>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
