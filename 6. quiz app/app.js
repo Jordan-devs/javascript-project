@@ -85,108 +85,143 @@ const questions = [
   // Add more questions as needed
 ];
 
-let currentQuestionIndex = 0;
-let totalScore = 0;
-let selectedAnswers = []; // To keep track of selected answers
+//getting elements from the DOM
+const quiz_container = document.querySelector("#quiz-container");
+const question_container = document.querySelector("#question-container");
+const form = document.querySelector("form");
+const firstName = document.querySelector("#firstName");
+const email = document.querySelector("input[type='email']");
+const controls = document.querySelector("#controls");
 
-const scores = {
+let user = {};
+
+let questionIndex = 0;
+let selectedAnswers = [];
+
+const score = {
   correct: 2,
   maybe: 1,
   wrong: 0,
 };
 
-const questionContainer = document.getElementById("question-container");
-const previousButton = document.getElementById("previous-button");
-const nextButton = document.getElementById("next-button");
-const resultDiv = document.getElementById("result");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name = firstName.value.trim();
+  const mail = email.value.trim();
+  if (!name || !mail) {
+    return alert("Please fill in the form");
+  }
+  user.name = name;
+  user.mail = mail;
 
+  loadQuestion(questionIndex);
+});
+
+//adding the questions
 function loadQuestion(index) {
-  const currentQuestion = questions[index];
-  questionContainer.innerHTML = `
-    <div class="question">
-      <h2>${currentQuestion.question}</h2>
-      <ul class="options">
-        ${currentQuestion.options
-          .map(
-            (option, i) => `
-          <li data-type="${
-            option.type
-          }" onclick="selectOption(this, ${index}, ${i})" 
-          class="${selectedAnswers[index] === i ? "selected" : ""}">
-            ${option.answer}
-          </li>
-        `
-          )
-          .join("")}
-      </ul>
-    </div>
+  const question = questions[index];
+  question_container.innerHTML = "";
+  question_container.innerHTML = `
+  <h2 class= "q-h2">${question.question}</h2>
+  <ul class = "options">${question.options
+    .map(
+      (option, i) => ` 
+    <li data-type= "${option.type}">
+    <div class = "check"  
+    id = "${selectedAnswers[index] == i ? "checked" : ""}">
+    </div>${option.answer}</li>
+  `
+    )
+    .join("")}
+    </ul>
   `;
+  const checks = document.querySelectorAll(".check");
+  checks.forEach((check, i) => {
+    check.addEventListener("click", () => {
+      selectedAns(check, index, i);
+    });
+  });
 
-  // Enable/disable buttons
-  previousButton.disabled = index === 0;
-  nextButton.textContent = index === questions.length - 1 ? "Submit" : ">";
+  controls.innerHTML = "";
+
+  const previousBtn = document.createElement("button");
+  const previous_button = "previous_button";
+  previousBtn.id = previous_button;
+  previousBtn.classList.add("btn");
+  previousBtn.textContent = "Previous";
+
+  const nextBtn = document.createElement("button");
+  const next_button = "next_button";
+  nextBtn.id = next_button;
+  nextBtn.classList.add("btn");
+
+  controls.appendChild(previousBtn);
+  controls.appendChild(nextBtn);
+
+  previousBtn.disabled = index === 0;
+  nextBtn.textContent = index === questions.length - 1 ? "submit" : "Next";
+
+  //buttons functionality
+  buttons(previousBtn, nextBtn);
 }
 
-function selectOption(optionElement, questionIndex, optionIndex) {
-  // Update selected answer
-  selectedAnswers[questionIndex] = optionIndex;
+//saving selected answers
+function selectedAns(element, questionIndex, answerPicked) {
+  //saving the answer
+  selectedAnswers[questionIndex] = answerPicked;
 
-  // Clear previous selection
-  const options = document.querySelectorAll(".options li");
-  options.forEach((opt) => opt.classList.remove("selected"));
+  //updating UI for selected answers
 
-  // Highlight selected option
-  optionElement.classList.add("selected");
+  const selected = document.querySelectorAll("li div");
+  selected.forEach((opt) => {
+    opt.classList.remove("checked");
+  });
+
+  element.classList.add("checked");
 }
 
-previousButton.addEventListener("click", () => {
-  if (currentQuestionIndex > 0) {
-    currentQuestionIndex--;
-    loadQuestion(currentQuestionIndex);
-  }
-});
+function buttons(btn1, btn2) {
+  btn1.addEventListener("click", () => {
+    if (questionIndex <= 0) return;
+    questionIndex--;
+    loadQuestion(questionIndex);
+  });
 
-nextButton.addEventListener("click", () => {
-  const selectedOption = selectedAnswers[currentQuestionIndex];
-  if (selectedOption === undefined) {
-    alert("Please select an answer before proceeding!");
-    return;
-  }
+  btn2.addEventListener("click", () => {
+    //if the user selected an option
+    const user_option = selectedAnswers[questionIndex];
+    if (user_option === undefined) {
+      return alert("Please choose an option");
+    }
+    if (questionIndex < questions.length - 1) {
+      questionIndex++;
+      return loadQuestion(questionIndex);
+    } else {
+      feedback();
+    }
+  });
+}
 
-  if (currentQuestionIndex < questions.length - 1) {
-    currentQuestionIndex++;
-    loadQuestion(currentQuestionIndex);
-  } else {
-    calculateScore();
-    showResult();
-  }
-});
-
-function calculateScore() {
-  totalScore = selectedAnswers.reduce((score, answerIndex, questionIndex) => {
-    const answerType = questions[questionIndex].options[answerIndex].type;
-    return score + scores[answerType];
+function totalScore() {
+  return selectedAnswers.reduce((total, curr, index) => {
+    let answer = questions[index].options[curr].type;
+    return total + score[answer];
   }, 0);
 }
 
-function showResult() {
-  questionContainer.innerHTML = "";
-  previousButton.style.display = "none";
-  nextButton.style.display = "none";
+function feedback() {
+  let total = totalScore();
+  question_container.innerHTML = "";
+  question_container.style.height = "10%";
+  controls.innerHTML = "";
+  const result = document.querySelector("#result");
 
-  let feedback = "";
-  if (totalScore >= 10) {
-    feedback = "Strong aptitude for coding. You can learn coding easily!";
-  } else if (totalScore >= 6) {
-    feedback =
-      "Moderate aptitude. You can learn coding if you stay consistent and work on weak areas.";
+  if (total > 10) {
+    result.innerHTML = `Hey ${user.name} you are on the right track to becoming a strong programmer you are good to go <br/> Score:${total}`;
+  } else if (total >= 5) {
+    result.innerHTML = `Hey ${user.name} you have a good programming intuition 
+    just keep on practicing <br/> Score:${total}`;
   } else {
-    feedback =
-      "Coding may be challenging for you. Consider improving skills like problem-solving and persistence before diving in.";
+    result.innerHTML = `Hey ${user.name} you need to change your mentality on programming but i believe with the right practice and study guide you will be good to go <br/> Score:${total}`;
   }
-
-  resultDiv.innerHTML = `Your Score: ${totalScore}<br>${feedback}`;
 }
-
-// Initialize the quiz
-loadQuestion(currentQuestionIndex);
