@@ -25,3 +25,11 @@
 5. `simple todo app`
 
 ##### A todo app with a beautiful design
+
+6. `Quiz app`
+
+##### Quiz to test coding knowledge
+
+7. `password generator`
+
+##### Beautiful password generator
