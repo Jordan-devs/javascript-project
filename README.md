@@ -22,6 +22,8 @@
 
 ##### Made a calculator with simple operators
 
+---
+
 5. `simple todo app`
 
 ##### A todo app with a beautiful design
