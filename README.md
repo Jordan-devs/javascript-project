@@ -30,7 +30,7 @@
 
 6. `Quiz app`
 
-##### Quiz to test coding knowledge
+##### little Quiz to test your coding knowledge
 
 7. `password generator`
 
