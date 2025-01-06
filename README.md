@@ -34,4 +34,4 @@
 
 7. `password generator`
 
-##### password generator with lovely UI
+##### password generator with lovely UI/UX
