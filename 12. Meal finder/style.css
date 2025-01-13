@@ -1,0 +1,148 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff;
+  margin: 20px;
+  font-family: sans-serif;
+}
+
+header {
+  margin: 1.5rem;
+  margin-top: 2.2rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav .search_container {
+  width: 278px;
+  height: 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ffa31a;
+  border-radius: 1.5rem;
+  padding-block: 20px;
+  padding-inline: 10px;
+}
+
+#search {
+  width: 85%;
+  border: none;
+  background-color: transparent;
+  color: #ffa31a;
+  caret-color: #ffa31a;
+  padding: 10px 15px;
+  font-size: 0.88em;
+  letter-spacing: 0.3px;
+}
+
+#search:focus {
+  border-color: transparent;
+  outline: none;
+}
+
+.search_container i {
+  color: #ffa31a;
+  padding-right: 8px;
+  cursor: pointer;
+}
+
+.nav-links {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-links .nav-link {
+  margin-inline: 20px;
+}
+
+.meal_container {
+  width: 85%;
+  /* height: 500px; */
+  padding-block: 50px;
+  box-shadow: 0px 0px 27px 0px rgba(189, 179, 179, 0.75);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 4rem;
+  padding: 15px;
+}
+
+.img-container {
+  width: 50%;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  background-image: url("https://images.unsplash.com/photo-1600289031464-74d374b64991?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1075&q=80");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+}
+
+.meal_info {
+  width: 50%;
+}
+
+.meal_info h3 {
+  font-size: 2rem;
+  color: #2e3055;
+  margin-bottom: 1.3rem;
+  line-height: 3rem;
+  letter-spacing: -1px;
+}
+
+.meal_info p {
+  color: rgb(85, 81, 81);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.meal_info button {
+  padding: 8px 16px;
+  border: 2px solid #ffa31a;
+  color: #ffa31a;
+  font-size: 1.1rem;
+  font-weight: 500;
+  background-color: transparent;
+}
+
+.ingredients {
+  width: 70%;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  flex-wrap: wrap;
+}
+
+.ing {
+  padding: 10px 15px;
+  color: #ffa31a;
+  border: 1px solid #ffa31a;
+  margin: 5px;
+  border-radius: 100px;
+}

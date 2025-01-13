@@ -28,6 +28,7 @@ function makeTodo(value) {
   todo.appendChild(cont);
   todo.appendChild(del);
   todos.appendChild(todo);
+  saveData();
 }
 
 //adding check functionality
@@ -38,8 +39,10 @@ todos.addEventListener("click", (e) => {
     e.target.classList.toggle("checked");
     e.target.textContent = e.target.classList.contains("checked") ? "✔" : "";
     e.target.nextElementSibling.classList.toggle("completed");
+    saveData();
   } else if (e.target.closest("lord-icon[trigger ='hover']")) {
     e.target.closest(".todo").remove();
+    saveData();
   }
 });
 
@@ -50,3 +53,13 @@ form.addEventListener("submit", (e) => {
   input.value = "";
   makeTodo(value);
 });
+
+function saveData() {
+  localStorage.setItem("data", todos.innerHTML);
+}
+
+function showData() {
+  todos.innerHTML = localStorage.getItem("data");
+}
+
+showData();
