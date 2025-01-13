@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Recipe finder</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <form class="search_container">
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="Search..."
+          />
+          <i class="fa-solid fa-magnifying-glass magnifier"></i>
+        </form>
+        <ul class="nav-links">
+          <li class="nav-link">Breakfast</li>
+          <li class="nav-link">Lunch</li>
+          <li class="nav-link">Dinner</li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="meal_container">
+        <div class="img-container">
+          <div class="img"></div>
+        </div>
+
+        <div class="meal_info">
+          <h3 class="meal_name">Food Name</h3>
+          <p id="info">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum eos
+            voluptatibus tenetur, ipsum omnis doloribus nihil quisquam maiores
+            corporis iste.
+          </p>
+          <button type="button">$20 - Order Now</button>
+        </div>
+      </section>
+      <section class="ingredients"></section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
