@@ -30,9 +30,17 @@
           <li class="nav-link">Lunch</li>
           <li class="nav-link">Dinner</li>
         </ul>
+        <button class="collapse">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </nav>
     </header>
     <main>
+      <section id="error_message">
+        <div class="message"></div>
+      </section>
       <section class="meal_container">
         <div class="img-container">
           <div class="img"></div>
@@ -40,11 +48,13 @@
 
         <div class="meal_info">
           <h3 class="meal_name">Food Name</h3>
-          <p id="info">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum eos
-            voluptatibus tenetur, ipsum omnis doloribus nihil quisquam maiores
-            corporis iste.
-          </p>
+          <div class="info-container">
+            <p id="info">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
+              eos voluptatibus tenetur, ipsum omnis doloribus nihil quisquam
+              maiores corporis iste.
+            </p>
+          </div>
           <button type="button">$20 - Order Now</button>
         </div>
       </section>

@@ -2,7 +2,6 @@ const searchMeal = async (e) => {
   e.preventDefault();
 
   //Getting data from the dom
-  const input = document.querySelector("#search");
   const img = document.querySelector(".img");
   const meal_name = document.querySelector(".meal_name");
   const info = document.querySelector("#info");
@@ -77,3 +76,5 @@ form.addEventListener("submit", searchMeal);
 
 const magnifier = document.querySelector(".magnifier");
 magnifier.addEventListener("click", searchMeal);
+
+const input = document.querySelector("#search");

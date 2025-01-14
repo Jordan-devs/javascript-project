@@ -64,6 +64,26 @@ nav .search_container {
 
 .nav-links .nav-link {
   margin-inline: 20px;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #ffa31a;
+}
+
+/* collapse button  */
+.collapse {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
 
 .meal_container {
@@ -95,6 +115,7 @@ nav .search_container {
   width: 350px;
   height: 350px;
   border-radius: 50%;
+  border: 3px solid #ffa31a;
 }
 
 .meal_info {
@@ -107,6 +128,26 @@ nav .search_container {
   margin-bottom: 1.3rem;
   line-height: 3rem;
   letter-spacing: -1px;
+  margin-top: 4rem;
+}
+
+.info-container {
+  overflow-y: scroll;
+  height: 150px;
+}
+
+.info-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.info-container::-webkit-scrollbar-thumb {
+  background: #ffa31a;
+  border-radius: 10px;
+}
+
+.info-container::-webkit-scrollbar-track {
+  background: #2e3055;
+  border-radius: 10px;
 }
 
 .meal_info p {
@@ -114,6 +155,7 @@ nav .search_container {
   font-size: 1rem;
   line-height: 1.5rem;
   margin-bottom: 1.5rem;
+  padding-right: 15px;
 }
 
 .meal_info button {
@@ -123,6 +165,8 @@ nav .search_container {
   font-size: 1.1rem;
   font-weight: 500;
   background-color: transparent;
+  margin-bottom: 4rem;
+  margin-top: 1.5rem;
 }
 
 .ingredients {
