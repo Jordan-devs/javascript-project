@@ -5,7 +5,20 @@ const searchMeal = async (e) => {
   const img = document.querySelector(".img");
   const meal_name = document.querySelector(".meal_name");
   const info = document.querySelector("#info");
+  const input = document.querySelector("#search");
   const ingredients_output = document.querySelector(".ingredients");
+  const error_container = document.querySelector("#error_message");
+  const errorMessage = document.querySelector(".message");
+
+  //clear error on input
+  input.addEventListener("input", () => {
+    error_container.classList.remove("active");
+  });
+
+  //dismiss error
+  error_container.addEventListener("click", () => {
+    error_container.classList.remove("active");
+  });
 
   //show meal to UI
   const showMealInfo = (meal) => {
@@ -48,10 +61,11 @@ const searchMeal = async (e) => {
       }
 
       const { meals } = await response.json();
-      console.log(meals);
+      error_container.classList.remove("active");
       return meals;
     } catch (error) {
-      console.log(error);
+      error_container.classList.add("active");
+      errorMessage.textContent = "An error occurred while fetching data.";
     }
   };
 
@@ -61,13 +75,22 @@ const searchMeal = async (e) => {
     const meals = await fetchMeal(val);
 
     if (!meals) {
-      alert("Meal not found!");
+      error_container.classList.add("active");
+      if (
+        errorMessage.textContent !== "An error occurred while fetching data."
+      ) {
+        errorMessage.textContent = "MEAL NOT FOUND :(";
+      }
+      if (meals === null) {
+        errorMessage.textContent = "MEAL NOT FOUND :(";
+      }
       return;
     }
 
     meals.forEach(showMealInfo);
   } else {
-    alert("Please try searching for a meal");
+    error_container.classList.add("active");
+    errorMessage.textContent = "PLEASE SEARCH FOR A MEAL :)";
   }
 };
 
@@ -77,4 +100,10 @@ form.addEventListener("submit", searchMeal);
 const magnifier = document.querySelector(".magnifier");
 magnifier.addEventListener("click", searchMeal);
 
-const input = document.querySelector("#search");
+const collapseBtn = document.querySelector(".collapse");
+const collapseMessage = document.querySelector(".collapse_message");
+
+collapseBtn.addEventListener("click", () => {
+  collapseBtn.classList.toggle("active");
+  collapseMessage.classList.toggle("active");
+});
