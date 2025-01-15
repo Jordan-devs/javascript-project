@@ -5,20 +5,32 @@
 }
 
 body {
-  background-color: #fff;
-  margin: 20px;
+  background-color: #ffffff;
   font-family: sans-serif;
 }
 
 header {
-  margin: 1.5rem;
-  margin-top: 2.2rem;
+  margin-inline: 0rem;
+  position: sticky;
+  top: 0px;
+  z-index: 3;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+  width: 100%;
 }
 
 nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  border-bottom: 1px solid #eee;
+  background-color: white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 100%;
+  z-index: 3;
 }
 
 nav .search_container {
@@ -68,6 +80,12 @@ nav .search_container {
   transition: color 0.2s ease-in-out;
 }
 
+a {
+  color: black;
+  text-decoration: none;
+  transition: color 200ms ease-in-out;
+}
+
 .nav-link:hover {
   color: #ffa31a;
 }
@@ -75,27 +93,127 @@ nav .search_container {
 /* collapse button  */
 .collapse {
   width: 30px;
-  height: 30px;
+  height: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   cursor: pointer;
   border: none;
   outline: none;
   background-color: transparent;
+  display: none;
+}
+
+.collapse span {
+  width: 100%;
+  height: 3px;
+  background-color: #2e3055;
+  transition: transform 0.3s linear;
+}
+
+.collapse.active span.first {
+  transform: translateY(8.8px) rotate(-45deg);
+}
+
+.collapse.active span.second {
+  display: none;
+  transition-delay: 0.2s;
+}
+
+.collapse.active span.third {
+  transform: translateY(-8.8px) rotate(45deg);
+}
+
+/* collapse message */
+.collapse_message {
+  transform: translateY(-5rem);
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  bottom: -138%;
+  visibility: hidden;
+  transition: all 0.3s linear;
+}
+
+.collapse_message.active {
+  transform: translateY(0rem);
+  visibility: visible;
+}
+
+.collapse_message .collapse-links {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+  background-color: #dedede;
+  border-bottom: 2px solid #eee;
+  width: 100%;
+  list-style-type: none;
+}
+
+.collapse_message .collapse-link {
+  margin: 1rem;
+  cursor: pointer;
+  color: black;
+}
+
+.collapse_message .collapse-link a:hover {
+  color: #ffa31a;
+}
+
+.collapse_message hr {
+  width: 100%;
+  height: 2px solid #eee;
+}
+
+main {
+  margin-inline: 12px;
+}
+
+/* error message */
+#error_message {
+  width: 85%;
+  height: 70px;
+  box-shadow: 0px 0px 7px 0px rgba(189, 179, 179, 0.75);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+  height: 0;
+  margin-top: 10px;
+}
+
+#error_message.active {
+  visibility: visible;
+  opacity: 1;
+  height: 70px;
+  transform: translateY(0);
+}
+
+.message {
+  letter-spacing: 2px;
+  font-size: 1.3rem;
+  color: crimson;
+  font-size: 700;
 }
 
 .meal_container {
   width: 85%;
-  /* height: 500px; */
-  padding-block: 50px;
+  padding-bottom: 40px;
+  padding-top: 10px;
   box-shadow: 0px 0px 27px 0px rgba(189, 179, 179, 0.75);
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  margin-top: 4rem;
+  margin-top: 3rem;
   padding: 15px;
 }
 
@@ -189,4 +307,79 @@ span {
   border: 1px solid #ffa31a;
   margin: 5px;
   border-radius: 100px;
+}
+
+.remarks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.remarks p {
+  margin-top: 1em;
+  font-size: 0.94em;
+  line-height: 1em;
+  color: #2e3055;
+  padding-bottom: 0.8rem;
+}
+
+.remarks hr {
+  width: 60%;
+  height: 2px;
+  color: #2e3055;
+  bottom: 0.5rem;
+  border-color: #9ca3af;
+}
+
+@media all and (max-width: 700px) {
+  .meal_container {
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .img-container {
+    width: 100%;
+  }
+
+  .meal_info {
+    width: 100%;
+  }
+
+  #error_message {
+    width: 100%;
+  }
+
+  .message {
+    letter-spacing: 1px;
+    font-size: 1rem;
+  }
+
+  .ingredients {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .nav-links {
+    display: none;
+  }
+
+  .collapse {
+    display: flex;
+  }
+
+  nav {
+    justify-content: space-between;
+    padding-inline: 12px;
+  }
+
+  .ingredients {
+    padding-top: 1.5rem;
+  }
+
+  .ing {
+    padding: 6px 10px;
+  }
 }
